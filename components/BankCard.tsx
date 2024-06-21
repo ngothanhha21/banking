@@ -13,9 +13,7 @@ const BankCard = ({
       <Link href="/" className="bank-card">
         <div className="bank-card_content">
           <div>
-            <h1 className="text-16 text-white font-semibold">
-              {account.name || userName}
-            </h1>
+            <h1 className="text-16 text-white font-semibold">{userName}</h1>
             <p className="font-ibm-plex-serif font-black text-white">
               {formatAmount(account.currentBalance)}
             </p>
@@ -33,11 +31,7 @@ const BankCard = ({
         </div>
 
         <div className="bank-card_icon">
-          <Image 
-            src="/icons/Paypass.svg" 
-            alt="pay" 
-            width={20} 
-            height={24} />
+          <Image src="/icons/Paypass.svg" alt="pay" width={20} height={24} />
           <Image
             src="/icons/mastercard.svg"
             alt="master card"
@@ -47,11 +41,11 @@ const BankCard = ({
           />
         </div>
         <Image
-            src="/icons/lines.png"
-            alt="lines"
-            height={316}
-            width={190}
-            className="absolute top-0 left-0"
+          src="/icons/lines.png"
+          alt="lines"
+          height={316}
+          width={190}
+          className="absolute top-0 left-0"
         />
       </Link>
       {/* COPY */}
