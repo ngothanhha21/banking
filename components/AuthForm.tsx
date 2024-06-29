@@ -1,4 +1,5 @@
 "use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
@@ -27,9 +28,11 @@ const AuthForm = ({ type }: { type: string }) => {
   const router = useRouter();
   const [user, setUser] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
-  // const logginInUser = await getLoggedInUser();
+  // const loggedInUser = await getLoggedInUser()
 
   const formScheme = authFormSchema(type);
+
+  // 1. Define your form.
   const form = useForm<z.infer<typeof formScheme>>({
     resolver: zodResolver(formScheme),
     defaultValues: {
@@ -38,13 +41,16 @@ const AuthForm = ({ type }: { type: string }) => {
     },
   });
 
+  // 2. Define a submit handler.
   const onSubmit = async (data: z.infer<typeof formScheme>) => {
     setIsLoading(true);
+
     try {
       if (type === "sign-up") {
         const newUser = await signUp(data);
         setUser(newUser);
       }
+
       if (type === "sign-in") {
         const response = await signIn({
           email: data.email,
